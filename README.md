@@ -1,7 +1,7 @@
-# white-headed-Langur
-This project builds a deep learning based call detection model to detect the calls of adult male white headed langurs in audio files recorded by automatic recording units, and ultimately find the audio containing the target call among many recordings.
+# DeepADN-PLUS
+This project builds a deep learning based DeepADN-PLUS model to detect the calls of adult male white headed langurs in audio files recorded by automatic recording units, and ultimately find the audio containing the target call among many recordings.
 
-![Model](image/Model.png)
+![Model](image/pipeline.png)
 
 # Initialization
 
