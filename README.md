@@ -10,7 +10,7 @@ This project builds a deep learning pipeline based DeepADN-PLUS model to detect 
 Clone the repository and navigate to the project directory:
 
 ```bash
-git clone https://github.com/yhzdsk/XXX.git
+git clone https://github.com/yhzdsk/DeepADN-PLUS.git
 cd xxx
 ```
 
@@ -30,4 +30,14 @@ pip install -r requirements.txt
 Generate a data list for the next step, with `audio_path` as the audio file path. Users need to store the audio dataset in the `dataset/audio` directory in advance, with each folder containing a category of audio data. Each audio data should be at least 3 seconds long, such as` dataset/audio/bird calls/···`. `Audio `is the location where the data list is stored, and the format of the generated data category is` Audio Path \ t Audio Corresponding Category Label`. The audio path and label are separated by a tab `\ t`. Readers can also modify the following functions according to their own way of storing data.
 
 Taking `audio.zip` as an example, this is a dataset of wild white headed langur calls created by our research team, which includes two categories: positive calls from adult male white headed langurs and negative sounds without white headed langur calls. The following is a function for generating a data list for this dataset. If readers want to use this dataset, please download and extract it to the `dataset` directory, and change the code for generating the data list to the following code.
+Run `create_data_list.py` to generate the data list, which provides various methods for creating datasets. For details, refer to the code.
 
+```
+python create_data_list.py
+```
+
+## Training model
+First, specify the paths of the training set and test set in `config.yml`, then modify the specific parameters, and finally run `train.py`.
+```
+CUDA_VISIBLE_DEVICES=0 python train.py
+```
