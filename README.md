@@ -59,10 +59,15 @@ The `train_list` and `test_list` in `config.yml` are used to select the txt file
 Below are the meanings of the parameters in `train.py`
 
 `add_arg('configs',          str,    '/path/to/configs.yml',    'Configuration file'    )`
+
 `add_arg("local_rank",       int,    0,                       'Parameters required for multi-card training'   )`
+
 `add_arg("use_gpu",          bool,   True,                  'Whether to use GPU for training'    )`
+
 `add_arg('save_model_path',  str,    '/path/to/model/',           'Path for model saving'   )`
+
 `add_arg('resume_model',     str,    None,                    'Resume training. If None, do not use pre-trained model'   )`
+
 `add_arg('pretrained_model', str,    None,                 'The path of the pre-trained model. If it is None, the pre-trained model will not be used'  )`
 
 ```
