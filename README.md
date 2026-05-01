@@ -57,20 +57,41 @@ First, specify the paths of the training set and test set in `config.yml`, then 
 The `train_list` and `test_list` in `config.yml` are used to select the txt files generated in the previous step，Select any one of MelSpectrogram, MFCC, or Fbank as the `feature_method`.Please adjust the settings in `config.yml` based on the audio length, sampling rate, and other information in the yourself-made dataset.
 
 Below are the meanings of the parameters in `train.py`
-
-`add_arg('configs',          str,    '/path/to/configs.yml',    'Configuration file'    )`
-
-`add_arg("local_rank",       int,    0,                       'Parameters required for multi-card training'   )`
-
-`add_arg("use_gpu",          bool,   True,                  'Whether to use GPU for training'    )`
-
-`add_arg('save_model_path',  str,    '/path/to/model/',           'Path for model saving'   )`
-
-`add_arg('resume_model',     str,    None,                    'Resume training. If None, do not use pre-trained model'   )`
-
-`add_arg('pretrained_model', str,    None,                 'The path of the pre-trained model. If it is None, the pre-trained model will not be used'  )`
-
+```
+add_arg('configs',          str,    '/path/to/configs.yml',    'Configuration file'    )
+add_arg("local_rank",       int,    0,                       'Parameters required for multi-card training'   )
+add_arg("use_gpu",          bool,   True,                  'Whether to use GPU for training'    )
+add_arg('save_model_path',  str,    '/path/to/model/',           'Path for model saving'   )
+add_arg('resume_model',     str,    None,                    'Resume training. If None, do not use pre-trained model'   )
+add_arg('pretrained_model', str,    None,                 'The path of the pre-trained model. If it is None, the pre-trained model will not be used'  )
+```
+After adjusting the aforementioned parameters and paths, you can proceed with training the model
 ```
 CUDA_VISIBLE_DEVICES=0 python train.py
 ```
 ## Applying model 
+`infersound.py` is used for batch prediction of audio file categories and automatically categorizes them into different folders based on the prediction results. It performs inference based on DeepADN-PLUS and is suitable for organizing messy audio data into a directory structure of "category name/filename".
+
+Core function: Traverse all audio files in the specified audio directory (including subfolders), use a trained model to predict the category of each audio, automatically create subfolders named after the category in the output directory, and move the audio files to the corresponding category folders.
+Example of processed directory structure:
+```
+output directory/
+├── positive
+│   ├── audio1.mp3
+│   └── audio2.mp3
+├── negaitve
+│ └── audio3.mp3
+│ └── audio3.mp3
+```
+Parameter Description:
+```
+add_arg('configs',          str,    'XXXX',   'Configuration file')
+add_arg('use_gpu',          bool,   True,                  'Whether to use GPU for prediction')
+add_arg('audio_dir',        str,    "XXXX", 'Audio folder path')
+add_arg('model_path',        str, 'XXXX', 'The file path of the trained prediction model')
+add_arg('output_dir',       str,     "XXXX", 'output folder path')
+```
+After adjusting the aforementioned parameters, run 
+```
+python classify.py
+```
