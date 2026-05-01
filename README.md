@@ -53,7 +53,8 @@ After running create_data_list.py, we obtain train.txt and test.txt. The dataset
 
 ## Training model
 First, specify the paths of the training set and test set in `config.yml`, then modify the specific parameters, and finally run `train.py`.
-The `train_list` and `test_list` in `config.yml` are used to select the txt files generated in the previous step，Select any one of MelSpectrogram, MFCC, or Fbank as the `feature_method`
+
+The `train_list` and `test_list` in `config.yml` are used to select the txt files generated in the previous step，Select any one of MelSpectrogram, MFCC, or Fbank as the `feature_method`.Please adjust the settings in `config.yml` based on the audio length, sampling rate, and other information in the yourself-made dataset.
 ```
 CUDA_VISIBLE_DEVICES=0 python train.py
 ```
