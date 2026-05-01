@@ -31,13 +31,27 @@ Generate a data list for the next step, with `audio_path` as the audio file path
 
 Taking `audio.zip` as an example, this is a dataset of wild white headed langur calls created by our research team, which includes two categories: positive calls from adult male white headed langurs and negative sounds without white headed langur calls. The following is a function for generating a data list for this dataset. If readers want to use this dataset, please download and extract it to the `dataset` directory, and change the code for generating the data list to the following code.
 Run `create_data_list.py` to generate the data list, which provides various methods for creating datasets. For details, refer to the code.
-
 ```
 python create_data_list.py
 ```
+After running create_data_list.py, we obtain train.txt and test.txt. The dataset structure is as follows:
+./datasets
+├── [dataset_name]
+│   └── train
+│       ├── positive
+│       │   ├── xxx.mp3
+│       │   └── xxxx.mp3
+│       └── negative
+│           └── ...
+│   └── test
+│       ├── positive
+│       │   └── ...
+│       └── negative
+│           └── ...
 
 ## Training model
 First, specify the paths of the training set and test set in `config.yml`, then modify the specific parameters, and finally run `train.py`.
+The `train_list` and `test_list` in `config.yml` are used to select the txt files generated in the previous step，Select any one of MelSpectrogram, MFCC, or Fbank as the `feature_method`
 ```
 CUDA_VISIBLE_DEVICES=0 python train.py
 ```
