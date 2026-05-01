@@ -35,6 +35,7 @@ Run `create_data_list.py` to generate the data list, which provides various meth
 python create_data_list.py
 ```
 After running create_data_list.py, we obtain train.txt and test.txt. The dataset structure is as follows:
+```
 ./datasets
 ├── [dataset_name]
 │   └── train
@@ -48,6 +49,7 @@ After running create_data_list.py, we obtain train.txt and test.txt. The dataset
 │       │   └── ...
 │       └── negative
 │           └── ...
+```
 
 ## Training model
 First, specify the paths of the training set and test set in `config.yml`, then modify the specific parameters, and finally run `train.py`.
