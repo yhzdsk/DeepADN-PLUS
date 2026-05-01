@@ -93,5 +93,5 @@ add_arg('output_dir',       str,     "XXXX", 'output folder path')
 ```
 After adjusting the aforementioned parameters, run 
 ```
-python classify.py
+python infersound.py
 ```
